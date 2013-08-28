@@ -24,7 +24,10 @@ LOCALE_LANGUAGE="en_US" # can be altered to your prefered locale, see http://doc
 LOCALE_CODESET="en_US.UTF-8"
 
 # Timezone
-TIMEZONE="Europe/Brussels" # can be altered, see http://manpages.ubuntu.com/manpages/jaunty/man3/DateTime::TimeZone::Catalog.3pm.html
+TIMEZONE="Europe/Brussels" # can be altered to your specific timezone, see http://manpages.ubuntu.com/manpages/jaunty/man3/DateTime::TimeZone::Catalog.3pm.html
+
+# Drush
+DRUSH_VERSION="5.9.0" # prefered Drush release from https://github.com/drush-ops/drush/releases
 
 #----- end of configurable variables -----#
 
@@ -83,6 +86,14 @@ sudo apt-get -y install openssl # openssl will allow https connections
 sudo a2enmod ssl # enable ssl/https
 sudo apt-get -y install vim # Vim, since only the vim-tidy package is installed
 sudo apt-get -y install git # GIT, in case you want to control source on the Vagrant instance
+
+# Install Drush
+echo "[vagrant provisioning] Installing drush..."
+sudo wget -q https://github.com/drush-ops/drush/archive/$DRUSH_VERSION.tar.gz # download drush from github
+sudo tar -C /opt/ -xzf $DRUSH_VERSION.tar.gz # untar drush in /opt
+sudo chown -R vagrant:vagrant /opt/drush # ensure the vagrant user has sufficiënt rights
+sudo ln -s /opt/drush/drush /usr/sbin/drush # add drush to /usr/sbin
+sudo rm -rf /home/vagrant/drush* # remove the downloaded tarbal
 
 
 ##### CONFIGURATION #####
