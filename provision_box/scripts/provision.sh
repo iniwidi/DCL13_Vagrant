@@ -13,7 +13,8 @@
 
 #### VARIABLES ####
 
-# Throughout this script, some variables are used, these are defined first
+# Throughout this script, some variables are used, these are defined first.
+# These variables can be altered to fit your specific needs or preferences.
 
 # MySQL password
 MYSQL_PASS="root" # can be altered, though storing passwords in a script is a bad idea!
@@ -24,6 +25,8 @@ LOCALE_CODESET="en_US.UTF-8"
 
 # Timezone
 TIMEZONE="Europe/Brussels" # can be altered, see http://manpages.ubuntu.com/manpages/jaunty/man3/DateTime::TimeZone::Catalog.3pm.html
+
+#----- end of configurable variables -----#
 
 
 #### PROVISION LAMP STACK ####
