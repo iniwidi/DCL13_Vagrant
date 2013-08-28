@@ -22,6 +22,9 @@ MYSQL_PASS="root" # can be altered, though storing passwords in a script is a ba
 LOCALE_LANGUAGE="en_US" # can be altered to your prefered locale, see http://docs.moodle.org/dev/Table_of_locales
 LOCALE_CODESET="en_US.UTF-8"
 
+# Timezone
+TIMEZONE="Europe/Brussels" # can be altered, see http://manpages.ubuntu.com/manpages/jaunty/man3/DateTime::TimeZone::Catalog.3pm.html
+
 
 #### PROVISION LAMP STACK ####
 
@@ -31,11 +34,16 @@ echo "[vagrant provisioning] Installing LAMP stack..."
 echo "[vagrant provisioning] Setting locale..."
 sudo locale-gen $LOCALE_LANGUAGE $LOCALE_CODESET
 
+# Set timezone, for unattended info see https://help.ubuntu.com/community/UbuntuTime#Using_the_Command_Line_.28unattended.29
+echo "[vagrant provisioning] Setting timezone..."
+echo $TIMEZONE | sudo tee /etc/timezone
+sudo dpkg-reconfigure --frontend noninteractive tzdata
+
 # Download and update package lists
 echo "[vagrant provisioning] Package manager updates..."
 sudo apt-get update
 
-# Upgrade installed packages. Info on hands-off update: http://askubuntu.com/a/262445
+# Upgrade installed packages. Info on unattended update: http://askubuntu.com/a/262445
 echo "[vagrant provisioning] Updating installed packages..."
 unset UCF_FORCE_CONFFOLD
 export UCF_FORCE_CONFFNEW=YES
@@ -47,7 +55,7 @@ apt-get -o Dpkg::Options::="--force-confnew" --force-yes -fuy dist-upgrade
 echo "[vagrant provisioning] Installing nfs-common..."
 sudo apt-get -y install nfs-common # commonly installed on Ubuntu but not on all Linux distros
 
-# Set MySQL root password and install MySQL. Info on hands-off install: http://serverfault.com/questions/19367
+# Set MySQL root password and install MySQL. Info on unattended install: http://serverfault.com/questions/19367
 echo mysql-server mysql-server/root_password select $MYSQL_PASS | debconf-set-selections
 echo mysql-server mysql-server/root_password_again select $MYSQL_PASS | debconf-set-selections
 echo "[vagrant provisioning] Installing mysql-server..."
@@ -72,6 +80,13 @@ sudo apt-get -y install openssl # openssl will allow https connections
 sudo a2enmod ssl # enable ssl/https
 sudo apt-get -y install vim # Vim, since only the vim-tidy package is installed
 sudo apt-get -y install git # GIT, in case you want to control source on the Vagrant instance
+
+
+##### CONFIGURATION #####
+
+echo "[vagrant provisioning] Configuring vagrant box..."
+usermod -a -G vagrant www-data # adds vagrant user to www-data group
+
 
 
 #### CLEAN UP ####
