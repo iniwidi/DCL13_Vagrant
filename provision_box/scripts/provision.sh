@@ -75,7 +75,7 @@ sudo service apache2 restart # restarting for sanities' sake
 
 # Install PHP
 echo "[vagrant provisioning] Installing PHP..."
-sudo apt-get install php5
+sudo apt-get -y install php5
 
 
 #### PROVISION OTHER PACKAGES ####
@@ -91,9 +91,9 @@ sudo apt-get -y install git # GIT, in case you want to control source on the Vag
 echo "[vagrant provisioning] Installing drush..."
 sudo wget -q https://github.com/drush-ops/drush/archive/$DRUSH_VERSION.tar.gz # download drush from github
 sudo tar -C /opt/ -xzf $DRUSH_VERSION.tar.gz # untar drush in /opt
-sudo chown -R vagrant:vagrant /opt/drush # ensure the vagrant user has sufficiënt rights
-sudo ln -s /opt/drush/drush /usr/sbin/drush # add drush to /usr/sbin
-sudo rm -rf /home/vagrant/drush* # remove the downloaded tarbal
+sudo chown -R vagrant:vagrant /opt/drush-$DRUSH_VERSION # ensure the vagrant user has sufficiënt rights
+sudo ln -s /opt/drush-$DRUSH_VERSION/drush /usr/sbin/drush # add drush to /usr/sbin
+sudo rm -rf /home/vagrant/$DRUSH_VERSION.tar.gz # remove the downloaded tarbal
 
 
 ##### CONFIGURATION #####
