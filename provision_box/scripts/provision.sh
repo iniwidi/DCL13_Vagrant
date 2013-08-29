@@ -82,10 +82,16 @@ sudo service apache2 restart # restart apache so latest php config is picked up
 
 echo "[vagrant provisioning] Installing other packages..."
 
-sudo apt-get -y install openssl # openssl will allow https connections
+# Misc tools
+sudo apt-get install -y curl # curl
+sudo apt-het install -y make # make is not installed by default believe it or not
+sudo apt-get install -y openssl # openssl will allow https connections
 sudo a2enmod ssl # enable ssl/https
-sudo apt-get -y install vim # Vim, since only the vim-tidy package is installed
-sudo apt-get -y install git # GIT, in case you want to control source on the Vagrant instance
+sudo apt-get install -y vim # Vim, since only the vim-tidy package is installed
+
+# Version control tools
+sudo apt-get install -y git # GIT, in case you want to control source on the Vagrant instance
+sudo apt-get install -y subversion # SVN, since not everyone has hopped over to GIT yet
 
 # Install Drush
 echo "[vagrant provisioning] Installing drush..."
