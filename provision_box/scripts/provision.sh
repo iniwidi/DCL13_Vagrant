@@ -59,24 +59,24 @@ apt-get -o Dpkg::Options::="--force-confnew" --force-yes -fuy dist-upgrade
 
 # Install or update nfs-common to the latest release
 echo "[vagrant provisioning] Installing nfs-common..."
-sudo apt-get -y install nfs-common # commonly installed on Ubuntu but not on all Linux distros
+sudo apt-get install -y nfs-common # commonly installed on Ubuntu but not on all Linux distros
 
 # Set MySQL root password and install MySQL. Info on unattended install: http://serverfault.com/questions/19367
 echo mysql-server mysql-server/root_password select $MYSQL_PASS | debconf-set-selections
 echo mysql-server mysql-server/root_password_again select $MYSQL_PASS | debconf-set-selections
 echo "[vagrant provisioning] Installing mysql-server..."
-sudo apt-get install -y mysql-server
+sudo apt-get install -y mysql-server mysql-client # install mysql server and client
 sudo service mysql restart # restarting for sanities' sake
 
 # Install Apache
 echo "[vagrant provisioning] Installing apache2..."
-sudo apt-get -y install apache2
+sudo apt-get install -y apache2 # installs apache and some dependencies
 sudo service apache2 restart # restarting for sanities' sake
 
 # Install PHP
 echo "[vagrant provisioning] Installing PHP..."
-sudo apt-get -y install php5
-
+sudo apt-get install -y php5 php5-cli php5-common php5-curl php5-gd php5-mysql # php install with common extensions
+sudo service apache2 restart # restart apache so latest php config is picked up
 
 #### PROVISION OTHER PACKAGES ####
 
