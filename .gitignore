@@ -1,2 +1,6 @@
+# ignore .vagrant stuff
+*/.vagrant*
+
+# ignore content of provisionbox' /logs and /www folder
 provision_box/www/*
 provision_box/logs/*
