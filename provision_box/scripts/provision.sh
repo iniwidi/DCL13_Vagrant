@@ -1,6 +1,6 @@
 #! /bin/bash
 
-# INFO
+##### INFO #####
 
 # Provision.sh
 #
@@ -11,7 +11,7 @@
 # Author: Jurgen Verhasselt - https://github.com/sjugge
 
 
-#### VARIABLES ####
+##### VARIABLES #####
 
 # Throughout this script, some variables are used, these are defined first.
 # These variables can be altered to fit your specific needs or preferences.
@@ -32,7 +32,21 @@ DRUSH_VERSION="5.9.0" # prefered Drush release from https://github.com/drush-ops
 #----- end of configurable variables -----#
 
 
-#### PROVISION LAMP STACK ####
+##### PROVISION CHECK ######
+
+# The provision check is intented to not run the full provision script when a box has already been provisioned.
+# At the end of this script, a file is created on the vagrant box, we'll check if it exists now.
+echo "[vagrant provisioning] Checking if the box was already provisioned..."
+
+if [ -e "/home/vagrant/.provision_check" ]
+then
+  # Skipping provisioning if the box is already provisioned
+  echo "[vagrant provisioning] The box is already provisioned..."
+  exit
+fi
+
+
+##### PROVISION LAMP STACK #####
 
 echo "[vagrant provisioning] Installing LAMP stack..."
 
@@ -79,7 +93,8 @@ echo "[vagrant provisioning] Installing PHP..."
 sudo apt-get install -y php5 php5-cli php5-common php5-curl php5-gd php5-mysql # php install with common extensions
 sudo service apache2 restart # restart apache so latest php config is picked up
 
-#### PROVISION OTHER PACKAGES ####
+
+##### PROVISION OTHER PACKAGES #####
 
 echo "[vagrant provisioning] Installing other packages..."
 
@@ -109,8 +124,14 @@ echo "[vagrant provisioning] Configuring vagrant box..."
 usermod -a -G vagrant www-data # adds vagrant user to www-data group
 
 
-
-#### CLEAN UP ####
+##### CLEAN UP #####
 
 sudo dpkg --configure -a # when upgrade or install doesnt run well (e.g. loss of connection) this may resolve quite a few issues
 apt-get autoremove -y # remove obsolete packages
+
+
+##### PROVISIONCHECK #####
+
+# Create .provision_check for the script to check on during a next vargant up.
+echo "[vagrant provisioning] Creating .provision_check file..."
+touch .provision_check
