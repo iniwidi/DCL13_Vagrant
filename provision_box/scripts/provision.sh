@@ -50,12 +50,13 @@ echo "[vagrant provisioning] Package manager updates..."
 sudo apt-get update
 
 # Upgrade installed packages. Info on unattended update: http://askubuntu.com/a/262445
-echo "[vagrant provisioning] Updating installed packages..."
-unset UCF_FORCE_CONFFOLD
-export UCF_FORCE_CONFFNEW=YES
-ucf --purge /boot/grub/menu.lst
-export DEBIAN_FRONTEND=noninteractive
-apt-get -o Dpkg::Options::="--force-confnew" --force-yes -fuy dist-upgrade
+# Upgrades cause a known issue, see https://github.com/sjugge/DCL13_Vagrant/issues/1
+# echo "[vagrant provisioning] Updating installed packages..."
+# unset UCF_FORCE_CONFFOLD
+# export UCF_FORCE_CONFFNEW=YES
+# ucf --purge /boot/grub/menu.lst
+# export DEBIAN_FRONTEND=noninteractive
+# apt-get -o Dpkg::Options::="--force-confnew" --force-yes -fuy dist-upgrade
 
 # Install or update nfs-common to the latest release
 echo "[vagrant provisioning] Installing nfs-common..."
