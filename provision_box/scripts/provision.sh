@@ -16,6 +16,9 @@
 # Throughout this script, some variables are used, these are defined first.
 # These variables can be altered to fit your specific needs or preferences.
 
+# Server name
+HOSTNAME="vagrant.dcl"
+
 # MySQL password
 MYSQL_PASS="root" # can be altered, though storing passwords in a script is a bad idea!
 
@@ -108,7 +111,7 @@ echo "[vagrant provisioning] Installing other packages..."
 
 # Postfix
 echo "[vagrant provisioning] Installing postfix, mailutils..."
-echo postfix postfix/mailname string vagrant.dcl | debconf-set-selections
+echo postfix postfix/mailname string $HOSTNAME | debconf-set-selections
 echo postfix postfix/main_mailer_type string 'Internet Site' | debconf-set-selections
 sudo apt-get install -y postfix
 service postfix reload
@@ -116,9 +119,11 @@ service postfix reload
 # Misc tools
 echo "[vagrant provisioning] Installing curl, make, openssl, vim..."
 sudo apt-get install -y curl # curl
-sudo apt-het install -y make # make is not installed by default believe it or not
+sudo apt-get install -y make # make is not installed by default believe it or not
 sudo apt-get install -y openssl # openssl will allow https connections
+sudo apt-get install -y php5-dev # install phep5-dev to get phpize
 sudo a2enmod ssl # enable ssl/https
+sudo apt-get install -y unzip # unzip .zip files from cli
 sudo apt-get install -y vim # Vim, since only the vim-tidy package is installed
 
 # Version control tools
@@ -134,11 +139,30 @@ sudo chown -R vagrant:vagrant /opt/drush-$DRUSH_VERSION # ensure the vagrant use
 sudo ln -s /opt/drush-$DRUSH_VERSION/drush /usr/sbin/drush # add drush to /usr/sbin
 sudo rm -rf /home/vagrant/$DRUSH_VERSION.tar.gz # remove the downloaded tarbal
 
+# Install xhprof
+echo "[vagrant provisioning] Installing xhprof..."
+sudo wget -q https://github.com/facebook/xhprof/archive/master.zip
+sudo unzip /home/vagrant/master.zip
+cd /home/vagrant/xhprof-master/extension
+sudo phpize
+sudo ./configure
+make
+make install
+echo "extension=xhprof.so" >> /etc/php5/conf.d/xhprof.ini
+echo "xhprof.output_dir=/tmp" >> /etc/php5/conf.d/xhprof.ini
+cd -
+sudo rm -f /home/vagrant/master.zip
+sudo service apache2 restart
+
 
 ##### CONFIGURATION #####
 
 echo "[vagrant provisioning] Configuring vagrant box..."
 usermod -a -G vagrant www-data # adds vagrant user to www-data group
+
+# Hostname
+echo "[vagrant provisioning] Setting hostname..."
+sudo hostname $HOSTNAME
 
 
 ##### CLEAN UP #####
