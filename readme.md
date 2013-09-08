@@ -17,7 +17,7 @@ session.
 ## Important note on security
 
 This repo is for demonstration purposes only and contains some passwords. 
-It's stronlgy recommended to not use the scripts 'as is' for production or even development environments.
+It's stronlgy recommended to not use the resources 'as is' for production or even development environments.
 
 
 ## Dependencies
@@ -38,7 +38,7 @@ Although this setup should run on Linux, it is untested. Feedback from Linux use
 NFS will not work on Windows. This repo uses NFS for optimal performance of shared folders. 
 Further info can be found in [the Vagrant documentation](http://docs.vagrantup.com/v2/synced-folders/nfs.html).
 
-I suggest that is you're running Windows, you get yourself a Linux installer asap.
+I suggest that if you're running Windows, you get yourself a Linux installer asap.
 
 
 ## How to use this Vagrant setup
