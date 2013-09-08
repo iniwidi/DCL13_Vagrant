@@ -4,11 +4,14 @@ Vagrant stuffs for the DrupalCamp Leuven [Getting Started With Vagrant](http://l
 session.
 
 * [Important note on security](https://github.com/sjugge/DCL13_Vagrant#important-note-on-security)
+* [Dependencies](https://github.com/sjugge/DCL13_Vagrant#dependencies) 
+  * [Note to Linux & Windows users](https://github.com/sjugge/DCL13_Vagrant#note-to-linux--windows-users) 
 * [How to use this Vagrant setup](https://github.com/sjugge/DCL13_Vagrant#how-to-use-this-vagrant-setup)
   * [Provision Box](https://github.com/sjugge/DCL13_Vagrant#provision_box)
   * [Project Box](https://github.com/sjugge/DCL13_Vagrant#project_box)
 * [Customisations & hacks](https://github.com/sjugge/DCL13_Vagrant#customisations--hacks)
 * [Known issues](https://github.com/sjugge/DCL13_Vagrant#known-issues)
+* [Resources](https://github.com/sjugge/DCL13_Vagrant#resources)
 
 
 ## Important note on security
@@ -80,7 +83,13 @@ Provides needed files to run [a Drupal project](https://github.com/sjugge/DCL13_
 Improvements to this setup can be done by forking, pull requests, posting issues, etc. However, I can't promise any sort of guarantee that these will be adressed in a timely fashion.
 You are ofcourse free to clone the repo and improve or alter it to fit your needs.
 
+
 ## Known issues
 
 Things that aren't completely up to par are likely to be logged in [the issue tracker](https://github.com/sjugge/DCL13_Vagrant/issues).
 
+
+## Resources
+
+* [Vagrant docs](http://docs.vagrantup.com/)
+* [Drupal test repo](https://github.com/sjugge/DCL13_Drupal)
