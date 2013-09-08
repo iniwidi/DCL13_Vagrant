@@ -19,6 +19,8 @@ The build box is repackaged and made available at https://bitly.com/precise64DCL
 * `vagrant package --base build_box_TIMESTAMP --output name_of_result.box`
 * use the packaged box to run the project_box. This way provisioning only has to run once.
 
+To find out the name of the running Vagrant box (`build_box_TIMESTAMP`), you can run `VBoxManage list vms` to list running Vagrant instances.
+
 ## [project_box](https://github.com/sjugge/DCL13_Vagrant/tree/master/project_box)
 Provides needed files to run [a Drupal project](https://github.com/sjugge/DCL13_Drupal) on Vagrant.
 
