@@ -8,18 +8,22 @@ session.
 This repo is for demonstration purposes only and contains some passwords. 
 It's stronlgy recommended to not use the scripts 'as is' for production or even development environments.
 
+
 ## How to use this Vagrant setup
 
 This repo contains two main parts:
 
 [1. provision_box](https://github.com/sjugge/DCL13_Vagrant#provision_box): this box provisions a clean Ubuntu 12.04 Vagrant box.
+
 [2. project_box](https://github.com/sjugge/DCL13_Vagrant#project_box): this box is intended as resource for Drupal projects. 
+
 
 ## [provision_box](https://github.com/sjugge/DCL13_Vagrant/tree/master/provision_box)
 
 Takes an empty precise64 vagrant box and provisions it with a LAMP stack and other tools, aimed at running Drupal.
 After provisioning it is packaged so that users don't have to go throught the entire instalation process of the LAMP stack.
 The build box is repackaged and made available at https://bitly.com/precise64DCL (links to dropbox) in order to demonstrate the project_box.
+
 
 ### Usage
 
@@ -29,8 +33,10 @@ The build box is repackaged and made available at https://bitly.com/precise64DCL
 
 To find out the name of the running Vagrant box (`build_box_TIMESTAMP`), you can run `VBoxManage list vms` to list running Vagrant instances.
 
+
 ## [project_box](https://github.com/sjugge/DCL13_Vagrant/tree/master/project_box)
 Provides needed files to run [a Drupal project](https://github.com/sjugge/DCL13_Drupal) on Vagrant.
+
 
 ### Usage
 
@@ -39,9 +45,10 @@ Provides needed files to run [a Drupal project](https://github.com/sjugge/DCL13_
   * `cp -r /path/to/DCL13_Vagrant/project_box/scripts/* /path/to/DCL13_Drupal/scripts`
 * run `vargant up`
 
-## Customisation
 
-Improvements to this setup can be done by forking, pull requests, posting issues, etc. I can't however promise any sort of guarantee that these will be adressed in a timely fashion.
+## Customisations & hacks
+
+Improvements to this setup can be done by forking, pull requests, posting issues, etc. However, I can't promise any sort of guarantee that these will be adressed in a timely fashion.
 You are ofcourse free to clone the repo and improve or alter it to fit your needs.
 
 ## Known issues
