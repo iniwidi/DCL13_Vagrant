@@ -87,6 +87,14 @@ sudo service mysql restart # restarting for sanities' sake
 echo "[vagrant provisioning] Installing apache2..."
 sudo apt-get install -y apache2 # installs apache and some dependencies
 sudo service apache2 restart # restarting for sanities' sake
+echo "[vagrant provisioning] Applying Apache vhost conf..."
+sudo rm -f /etc/apache2/sites-available/default
+sudo rm -f /etc/apache2/sites-enabled/000-default
+sudo cp /home/vagrant/scripts/resources/default /etc/apache2/sites-available/
+sudo ln -s /etc/apache2/sites-available/default /etc/apache2/sites-enabled/000-default
+a2enmod rewrite # enable mod_rewrite
+a2enmod actions # actions
+sudo service apache2 restart
 
 # Install PHP
 echo "[vagrant provisioning] Installing PHP..."
