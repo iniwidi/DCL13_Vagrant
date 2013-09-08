@@ -1,0 +1,38 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+
+  ## Configuration
+
+  # Virtualbox tweaks. See http://docs.vagrantup.com/v2/virtualbox/configuration.html
+  config.vm.provider :virtualbox do |vb|
+    # Moar memory
+    vb.customize ["modifyvm", :id, "--memory", "1024"]
+  end
+
+  # NFS shares. See http://docs.vagrantup.com/v2/synced-folders/nfs.html
+  config.vm.synced_folder "www", "/var/www", :nfs => true
+  config.vm.synced_folder "logs", "/var/log", :nfs => true
+  config.vm.synced_folder "scripts", "/home/vagrant/scripts", :nfs => true
+  config.vm.synced_folder "db", "/home/vagrant/db", :nfs => true
+
+  ## Provision
+
+  # scripts/provision.sh will provision the box
+  # comment out when using a re-packaged box 
+  config.vm.provision :shell, :inline => "
+    sh /vagrant/scripts/project_setup.sh;
+  "
+
+
+  ## The Vagrant Box
+
+  # Defines the Vagrant box name, download URL, IP and hostname
+  config.vm.define :vagrant do |vagrant|
+    vagrant.vm.box = "precise64DCL"
+    vagrant.vm.box_url = "precise64DCL.box"
+    vagrant.vm.network :private_network, ip: "192.168.66.6"
+    vagrant.vm.hostname = "vagrant.dcl"
+  end
+end
