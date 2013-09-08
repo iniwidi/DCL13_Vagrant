@@ -51,7 +51,7 @@ mkdir DCL13 && cd DCL13 # made a dir to clone the Vagrant & Drupal repo
 git clone git@github.com:sjugge/DCL13_Vagrant.git # clone the Vagrant repo
 git clone git@github.com:sjugge/DCL13_Drupal.git # clone the Drupal repo
 cp DCL13_Vagrant/project_box/Vagrantfile DCL13_Drupal/Vagrantfile # copy the Vagrantfile to the repo
-cp -r DCL13_Vagrant/project_box/scripts/* /path/to/DCL13_Drupal/scripts # copy the scripts & recources to the Drupal repo
+cp -r DCL13_Vagrant/project_box/scripts/* DCL13_Drupal/scripts # copy the scripts & recources to the Drupal repo
 cd DCL13_Drupal # go to the Drupal repo
 vagrant up # 'vagrant up' the Drupal repo
 ```
