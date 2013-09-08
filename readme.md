@@ -46,11 +46,15 @@ I suggest that if you're running Windows, you get yourself a Linux installer asa
 
 ### Demo setup
 
-* `mkdir DCL13 && cd DCL13`
-* `git clone git@github.com:sjugge/DCL13_Vagrant.git`
-* `git clone git@github.com:sjugge/DCL13_Drupal.git`
-* `cp DCL13_Vagrant/project_box/Vagrantfile DCL13_Drupal/Vagrantfile`
-* `cp -r DCL13_Vagrant/project_box/scripts/* /path/to/DCL13_Drupal/scripts`
+``` bash
+mkdir DCL13 && cd DCL13 # made a dir to clone the Vagrant & Drupal repo
+git clone git@github.com:sjugge/DCL13_Vagrant.git # clone the Vagrant repo
+git clone git@github.com:sjugge/DCL13_Drupal.git # clone the Drupal repo
+cp DCL13_Vagrant/project_box/Vagrantfile DCL13_Drupal/Vagrantfile # copy the Vagrantfile to the repo
+cp -r DCL13_Vagrant/project_box/scripts/* /path/to/DCL13_Drupal/scripts # copy the scripts & recources to the Drupal repo
+cd DCL13_Drupal # go to the Drupal repo
+vagrant up # 'vagrant up' the Drupal repo
+```
  
 The above commands will get an existing Drupal project up and running with just the `vagrant up` command.
 
@@ -86,10 +90,13 @@ Provides needed files to run [a Drupal project](https://github.com/sjugge/DCL13_
 
 #### Project box usage
 
+[See also above...](https://github.com/sjugge/DCL13_Vagrant#demo-setup)
+
 * copy the `Vagrantfile` and `scripts` folder to your Drupal project
   * `cp /path/to/DCL13_Vagrant/project_box/Vagrantfile /path/to/DCL13_Drupal/Vagrantfile`
   * `cp -r /path/to/DCL13_Vagrant/project_box/scripts/* /path/to/DCL13_Drupal/scripts`
 * run `vargant up`
+ 
 
 
 ## Customisations & hacks
