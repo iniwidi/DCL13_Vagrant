@@ -3,7 +3,13 @@
 Vagrant stuffs for the DrupalCamp Leuven [Getting Started With Vagrant](http://leuven2013.drupalcamp.be/session/getting-started-vagrant) 
 session.
 
+## Important note on security
+
+This repo is for demonstration purposes only and contains some passwords. 
+It's stronlgy recommended to not use the scripts 'as is' for production or even development environments.
+
 ## [provision_box](https://github.com/sjugge/DCL13_Vagrant/tree/master/provision_box)
+
 Takes an empty precise64 vagrant box and provisions it with a LAMP stack and other tools, aimed at running Drupal.
 The build box is repackaged and made available at https://bitly.com/precise64DCL (links to dropbox).
 
