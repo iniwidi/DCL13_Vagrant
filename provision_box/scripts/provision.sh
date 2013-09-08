@@ -79,7 +79,7 @@ sudo apt-get install -y nfs-common # commonly installed on Ubuntu but not on all
 # Set MySQL root password and install MySQL. Info on unattended install: http://serverfault.com/questions/19367
 echo mysql-server mysql-server/root_password select $MYSQL_PASS | debconf-set-selections
 echo mysql-server mysql-server/root_password_again select $MYSQL_PASS | debconf-set-selections
-echo "[vagrant provisioning] Installing mysql-server..."
+echo "[vagrant provisioning] Installing mysql-server and mysql-client..."
 sudo apt-get install -y mysql-server mysql-client # install mysql server and client
 sudo service mysql restart # restarting for sanities' sake
 
@@ -106,7 +106,15 @@ sudo service apache2 restart # restart apache so latest php config is picked up
 
 echo "[vagrant provisioning] Installing other packages..."
 
+# Postfix
+echo "[vagrant provisioning] Installing postfix, mailutils..."
+echo postfix postfix/mailname string vagrant.dcl | debconf-set-selections
+echo postfix postfix/main_mailer_type string 'Internet Site' | debconf-set-selections
+sudo apt-get install -y postfix
+service postfix reload
+
 # Misc tools
+echo "[vagrant provisioning] Installing curl, make, openssl, vim..."
 sudo apt-get install -y curl # curl
 sudo apt-het install -y make # make is not installed by default believe it or not
 sudo apt-get install -y openssl # openssl will allow https connections
@@ -114,6 +122,7 @@ sudo a2enmod ssl # enable ssl/https
 sudo apt-get install -y vim # Vim, since only the vim-tidy package is installed
 
 # Version control tools
+echo "[vagrant provisioning] Installing git, svn..."
 sudo apt-get install -y git # GIT, in case you want to control source on the Vagrant instance
 sudo apt-get install -y subversion # SVN, since not everyone has hopped over to GIT yet
 
