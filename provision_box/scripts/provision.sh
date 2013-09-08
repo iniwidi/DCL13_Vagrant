@@ -171,7 +171,7 @@ sudo dpkg --configure -a # when upgrade or install doesnt run well (e.g. loss of
 apt-get autoremove -y # remove obsolete packages
 
 
-##### PROVISIONCHECK #####
+##### PROVISION CHECK #####
 
 # Create .provision_check for the script to check on during a next vargant up.
 echo "[vagrant provisioning] Creating .provision_check file..."
