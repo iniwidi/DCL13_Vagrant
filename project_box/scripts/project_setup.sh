@@ -26,6 +26,9 @@ fi
 
 ##### MySQL #####
 
+# Note that the commands below assumes that you have used the default credentials as provided
+# in the provision_box' provision.sh script, see https://github.com/sjugge/DCL13_Vagrant/blob/master/provision_box/scripts/provision.sh
+
 echo "[vagrant project provisioning] Creating MySQL db & user..."
 mysql -u root -e "create database VAGRANT default character set utf8" -proot
 mysql -u root -e "grant all privileges on VAGRANT.* to VAGRANT@localhost identified by 'VAGRANT'" -proot
@@ -35,6 +38,9 @@ mysql -u VAGRANT -pVAGRANT VAGRANT < /home/vagrant/db/$LATESTDB
 
 
 ##### SETTINGS #####
+
+# If a /sites/default/settings.php file exists, a backup will be made. After that, the Drupal version is detected.
+# Depending on the Drupal version, the appropriate settings.php file will be copied from the scripts/resources folder to the Drupal codebase.
 
 D6SETTINGS='/home/vagrant/scripts/resources/drupal_6.settings.php'
 D7SETTINGS='/home/vagrant/scripts/resources/drupal_7.settings.php'
