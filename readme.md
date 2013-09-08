@@ -7,6 +7,7 @@ session.
 * [Dependencies](https://github.com/sjugge/DCL13_Vagrant#dependencies) 
   * [Note to Linux & Windows users](https://github.com/sjugge/DCL13_Vagrant#note-to-linux--windows-users) 
 * [How to use this Vagrant setup](https://github.com/sjugge/DCL13_Vagrant#how-to-use-this-vagrant-setup)
+  * [Demo setup](https://github.com/sjugge/DCL13_Vagrant#demo-setup)
   * [Provision Box](https://github.com/sjugge/DCL13_Vagrant#provision_box)
   * [Project Box](https://github.com/sjugge/DCL13_Vagrant#project_box)
 * [Customisations & hacks](https://github.com/sjugge/DCL13_Vagrant#customisations--hacks)
@@ -43,6 +44,19 @@ I suggest that if you're running Windows, you get yourself a Linux installer asa
 
 ## How to use this Vagrant setup
 
+### Demo setup
+
+* `mkdir DCL13 && cd DCL13`
+* `git clone git@github.com:sjugge/DCL13_Vagrant.git`
+* `git clone git@github.com:sjugge/DCL13_Drupal.git`
+* `cp DCL13_Vagrant/project_box/Vagrantfile DCL13_Drupal/Vagrantfile`
+* `cp -r DCL13_Vagrant/project_box/scripts/* /path/to/DCL13_Drupal/scripts`
+ 
+The above commands will get an existing Drupal project up and running with just the `vagrant up` command.
+
+
+### Background
+
 This repo contains two main parts:
 
 [1. provision_box](https://github.com/sjugge/DCL13_Vagrant#provision_box): this box provisions a clean Ubuntu 12.04 Vagrant box.
@@ -57,7 +71,7 @@ After provisioning it is packaged so that users don't have to go throught the en
 The build box is repackaged and made available at https://bitly.com/precise64DCL (links to dropbox) in order to demonstrate the project_box.
 
 
-#### Usage
+#### Provision box usage
 
 * `vagrant up`
 * `vagrant package --base build_box_TIMESTAMP --output name_of_result.box`
@@ -70,7 +84,7 @@ To find out the name of the running Vagrant box (`build_box_TIMESTAMP`), you can
 Provides needed files to run [a Drupal project](https://github.com/sjugge/DCL13_Drupal) on Vagrant.
 
 
-#### Usage
+#### Project box usage
 
 * copy the `Vagrantfile` and `scripts` folder to your Drupal project
   * `cp /path/to/DCL13_Vagrant/project_box/Vagrantfile /path/to/DCL13_Drupal/Vagrantfile`
@@ -91,5 +105,6 @@ Things that aren't completely up to par are likely to be logged in [the issue tr
 
 ## Resources
 
+* [Drupalcamp Leuven session page](http://leuven2013.drupalcamp.be/node/153)
 * [Vagrant docs](http://docs.vagrantup.com/)
 * [Drupal test repo](https://github.com/sjugge/DCL13_Drupal)
