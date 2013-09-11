@@ -55,8 +55,7 @@ cp -r DCL13_Vagrant/project_box/scripts/* DCL13_Drupal/scripts # copy the script
 cd DCL13_Drupal # go to the Drupal repo
 vagrant up # 'vagrant up' the Drupal repo
 ```
- 
-The above commands will get an existing Drupal project up and running with just the `vagrant up` command.
+Or `wget https://gist.github.com/sjugge/6527855/raw/a23067b60c7c6aefc778130a72c73c5af733c7be/DCL13_Setup.sh && sh DCL13_Setup.sh`
 
 
 ### Background
