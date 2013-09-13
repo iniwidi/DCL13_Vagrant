@@ -46,7 +46,9 @@ I suggest that if you're running Windows, you get yourself a Linux installer asa
 
 ### Demo setup
 
-There's [a gist](https://gist.github.com/sjugge/6527855) of the code below.
+`wget http://bit.ly/DCL13_setup && sh DCL13_setup`
+
+*or*
 
 ``` bash
 mkdir DCL13 && cd DCL13 # made a dir to clone the Vagrant & Drupal repo
@@ -57,7 +59,6 @@ cp -r DCL13_Vagrant/project_box/scripts/* DCL13_Drupal/scripts # copy the script
 cd DCL13_Drupal # go to the Drupal repo
 vagrant up # 'vagrant up' the Drupal repo
 ```
-Or `wget https://gist.github.com/sjugge/6527855/raw/a23067b60c7c6aefc778130a72c73c5af733c7be/DCL13_Setup.sh && sh DCL13_Setup.sh`
 
 
 ### Background
