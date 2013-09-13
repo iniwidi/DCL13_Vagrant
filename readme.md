@@ -46,6 +46,8 @@ I suggest that if you're running Windows, you get yourself a Linux installer asa
 
 ### Demo setup
 
+There's [a gist](https://gist.github.com/sjugge/6527855) of the code below.
+
 ``` bash
 mkdir DCL13 && cd DCL13 # made a dir to clone the Vagrant & Drupal repo
 git clone git@github.com:sjugge/DCL13_Vagrant.git # clone the Vagrant repo
