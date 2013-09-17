@@ -3,6 +3,8 @@
 Vagrant stuffs for the DrupalCamp Leuven [Getting Started With Vagrant](http://leuven2013.drupalcamp.be/session/getting-started-vagrant) 
 session.
 
+**Read [the blog post](http://wunderkraut.be/blog/node/217) for all the gory details.**
+
 * [Important note on security](https://github.com/sjugge/DCL13_Vagrant#important-note-on-security)
 * [Dependencies](https://github.com/sjugge/DCL13_Vagrant#dependencies) 
   * [Note to Linux & Windows users](https://github.com/sjugge/DCL13_Vagrant#note-to-linux--windows-users) 
